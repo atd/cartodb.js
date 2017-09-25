@@ -96,28 +96,6 @@ function test() {
   return _mocha();
 }
 
-function coverage(done) {
-  _registerBabel();
-  gulp.src(['src/**/*.js'])
-    .pipe($.istanbul({
-      instrumenter: Instrumenter,
-      includeUntested: true
-    }))
-    .pipe($.istanbul.hookRequire())
-    .on('finish', () => {
-      return test()
-        .pipe($.istanbul.writeReports())
-        .on('end', done);
-    });
-}
-
-const watchFiles = ['src/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
-
-// Run the headless unit tests as you make changes.
-function watch() {
-  gulp.watch(watchFiles, ['test']);
-}
-
 function testBrowser() {
   // Our testing bundle is made up of our unit tests, which
   // should individually load up pieces of our application.
@@ -163,6 +141,28 @@ function testBrowser() {
       firstBuild = false;
     }))
     .pipe(gulp.dest('./tmp'));
+}
+
+function coverage(done) {
+  _registerBabel();
+  gulp.src(['src/**/*.js'])
+    .pipe($.istanbul({
+      instrumenter: Instrumenter,
+      includeUntested: true
+    }))
+    .pipe($.istanbul.hookRequire())
+    .on('finish', () => {
+      return test()
+        .pipe($.istanbul.writeReports())
+        .on('end', done);
+    });
+}
+
+const watchFiles = ['src/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
+
+// Run the headless unit tests as you make changes.
+function watch() {
+  gulp.watch(watchFiles, ['test']);
 }
 
 // Remove the built files
