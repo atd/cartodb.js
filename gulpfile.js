@@ -91,7 +91,7 @@ function _registerBabel() {
   require('babel-register');
 }
 
-function test() {
+function testUnit() {
   _registerBabel();
   return _mocha();
 }
@@ -152,7 +152,7 @@ function coverage(done) {
     }))
     .pipe($.istanbul.hookRequire())
     .on('finish', () => {
-      return test()
+      return testUnit()
         .pipe($.istanbul.writeReports())
         .on('end', done);
     });
@@ -186,8 +186,11 @@ gulp.task('lint', ['lint-src', 'lint-test', 'lint-gulpfile']);
 // Build two versions of the library
 gulp.task('build', ['lint', 'clean'], build);
 
-// Lint and run our tests
-gulp.task('test', ['lint'], test);
+// Lint and run our unit tests
+gulp.task('test-unit', ['lint'], testUnit);
+
+// Lint and run all tests
+gulp.task('test', ['test-unit']);
 
 // Set up coverage and run tests
 gulp.task('coverage', ['lint'], coverage);
