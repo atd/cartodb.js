@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["jquery"], factory);
 	else if(typeof exports === 'object')
-		exports["cartodb"] = factory(require("jquery"));
+		exports["CartoDB"] = factory(require("jquery"));
 	else
-		root["cartodb"] = factory(root["jquery"]);
+		root["CartoDB"] = factory(root["jquery"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -66,13 +66,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var cartodb = {
-	  greet: function greet() {
-	    return 'hello';
-	  }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var CartoDB = function CartoDB() {
+	  _classCallCheck(this, CartoDB);
 	};
 	
-	exports.default = cartodb;
+	exports.default = CartoDB;
 
 /***/ },
 /* 1 */

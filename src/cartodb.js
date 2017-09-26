@@ -1,9 +1,7 @@
 import $ from 'jquery';
 
-const cartodb = {
-  greet() {
-    return 'hello';
-  }
-};
+class CartoDB {
 
-export default cartodb;
+}
+
+export default CartoDB;

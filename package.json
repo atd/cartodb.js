@@ -58,6 +58,6 @@
   },
   "babelBoilerplateOptions": {
     "entryFileName": "cartodb.js",
-    "mainVarName": "cartodb"
+    "mainVarName": "CartoDB"
   }
 }

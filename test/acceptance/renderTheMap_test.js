@@ -8,7 +8,7 @@ Scenario('test cartodb is loaded', function* (I) {
   I.seeInTitle('CartoDB.js example');
 
   let cartodbType = yield I.executeScript(function () {
-    return typeof cartodb;
+    return typeof CartoDB;
   });
 
   let assert = require('assert');
