@@ -6,6 +6,9 @@ const path = require('path');
 const isparta = require('isparta');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
+const spawn = require('child_process').spawn;
+const browserSync = require('browser-sync');
+const selenium = require('selenium-standalone');
 
 const Instrumenter = isparta.Instrumenter;
 const mochaGlobals = require('./test/setup/.globals');
@@ -143,6 +146,50 @@ function testBrowser() {
     .pipe(gulp.dest('./tmp'));
 }
 
+function runTestServer(done) {
+
+  browserSync({
+    logLevel: 'silent',
+    notify: false,
+    open: false,
+    port: 9000,
+    server: {
+      baseDir: ['./']
+    },
+    ui: false
+  }, done);
+}
+
+function runSeleniumServer(done) {
+
+  selenium.install({
+    logger: function (message) { }
+  }, function (err) {
+    if (err) return done(err);
+
+    selenium.start(function (err, child) {
+      if (err) return done(err);
+      selenium.child = child;
+      done();
+    });
+  });
+}
+
+function testAcceptance(done) {
+
+  var codecept = spawn('./node_modules/codeceptjs-webdriverio/codecept.js', [ 'run' ]);
+
+  codecept.stdout.on('data', (data) => console.log(data.toString()));
+  codecept.stderr.on('data', (data) => console.log(data.toString()));
+
+  codecept.on('exit', (code) => {
+    selenium.child.kill();
+    browserSync.exit();
+
+    done(code);
+  });
+}
+
 function coverage(done) {
   _registerBabel();
   gulp.src(['src/**/*.js'])
@@ -189,8 +236,17 @@ gulp.task('build', ['lint', 'clean'], build);
 // Lint and run our unit tests
 gulp.task('test-unit', ['lint'], testUnit);
 
+// Run server for acceptance requests
+gulp.task('run-test-server', runTestServer);
+
+// Run selenium server for acceptance tests
+gulp.task('run-selenium-server', runSeleniumServer);
+
+// Run our acceptance tests
+gulp.task('test-acceptance', ['run-test-server', 'run-selenium-server'], testAcceptance);
+
 // Lint and run all tests
-gulp.task('test', ['test-unit']);
+gulp.task('test', ['test-unit', 'test-acceptance']);
 
 // Set up coverage and run tests
 gulp.task('coverage', ['lint'], coverage);
