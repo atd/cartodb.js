@@ -245,7 +245,8 @@ gulp.task('run-test-server', runTestServer);
 gulp.task('run-selenium-server', runSeleniumServer);
 
 // Run our acceptance tests
-gulp.task('test-acceptance', ['run-test-server', 'run-selenium-server'], testAcceptance);
+gulp.task('test-acceptance', ['build', 'run-test-server', 'run-selenium-server'],
+          testAcceptance);
 
 // Lint and run all tests
 gulp.task('test', ['test-unit', 'test-acceptance']);
