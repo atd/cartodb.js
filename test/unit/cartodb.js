@@ -1,20 +1,47 @@
 import CartoDB from '../../src/cartodb.js';
 
 describe('CartoDB', () => {
-  describe('Greet function', () => {
-    /*
-    beforeEach(() => {
-      spy(cartodb, 'greet');
-      cartodb.greet();
+
+  describe('constructor', () => {
+
+    var domElement = '#map',
+        provider = 'leaftlet',
+        config =  {},
+        map;
+
+    describe('domElement argument', () => {
+
+      describe('as string', () => {
+        before(() => {
+          map = new CartoDB(domElement, provider, config);
+        });
+
+        it('should have an object as domElement', () => {
+          expect(map.domElement).to.be.an('object');
+        });
+      })
+
+      describe('as object', () => {
+        before(() => {
+          map = new CartoDB({}, provider, config);
+        });
+
+        it('should have an object as domElement', () => {
+          expect(map.domElement).to.be.an('object');
+        });
+      })
     });
 
-    it('should have been run once', () => {
-      expect(cartodb.greet).to.have.been.calledOnce;
-    });
+    describe('provider argument', () => {
+      describe('with known provider', () => {
+        before(() => {
+          map = new CartoDB(domElement, provider, config);
+        });
 
-    it('should have always returned hello', () => {
-      expect(cartodb.greet).to.have.always.returned('hello');
+        it('should have and object as provider', () => {
+          expect(map.provider).to.be.a('function');
+        });
+      });
     });
-    */
   });
 });

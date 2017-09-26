@@ -17,5 +17,3 @@ require('./setup')();
 */
 import simpleJSDom from 'simple-jsdom';
 simpleJSDom.install();
-
-import $ from 'jquery';

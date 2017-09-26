@@ -1,6 +1,9 @@
+import $ from 'jquery';
+
 module.exports = function(root) {
   root = root ? root : global;
   root.expect = root.chai.expect;
+  root.$ = $;
 
   beforeEach(() => {
     // Using these globally-available Sinon features is preferrable, as they're
