@@ -7,3 +7,7 @@ Mini version of CartoDB.js
 [![Test Coverage](https://codeclimate.com/github/atd/cartodb.js/badges/coverage.svg)](https://codeclimate.com/github/atd/cartodb.js)
 [![Dependency Status](https://david-dm.org/atd/cartodb.js.svg)](https://david-dm.org/atd/cartodb.js)
 [![devDependency Status](https://david-dm.org/atd/cartodb.js/dev-status.svg)](https://david-dm.org/atd/cartodb.js#info=devDependencies)
+
+## Development
+
+You can use [yarn](https://yarnpkg.com/) to install node packages
