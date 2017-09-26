@@ -211,7 +211,7 @@ const watchFiles = ['src/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
 
 // Run the headless unit tests as you make changes.
 function watch() {
-  gulp.watch(watchFiles, ['test']);
+  gulp.watch(watchFiles, ['test-unit']);
 }
 
 // Remove the built files
