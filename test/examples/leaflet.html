@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>CartoDB.js example</title>
+    <style media="screen">
+      #map {
+        height: 400px;
+      }
+    </style>
   </head>
   <body>
 
@@ -52,7 +57,7 @@
     <script src="../../node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="../../dist/cartodb.js" charset="utf-8"></script>
     <script type="text/javascript">
-      var map = new CartoDB.default('#map', 'leaftlet', config);
+      var map = new CartoDB('#map', 'leaflet', config);
     </script>
   </body>
 </html>
