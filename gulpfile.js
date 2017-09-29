@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
+const seq = require('gulp-sequence');
 const del = require('del');
 const glob = require('glob');
 const path = require('path');
@@ -249,7 +250,7 @@ gulp.task('test-acceptance', ['build', 'run-test-server', 'run-selenium-server']
           testAcceptance);
 
 // Lint and run all tests
-gulp.task('test', ['test-unit', 'test-acceptance']);
+gulp.task('test', seq('test-unit', 'test-acceptance'));
 
 // Set up coverage and run tests
 gulp.task('coverage', ['lint'], coverage);
