@@ -1,5 +1,5 @@
 {
-  "name": "cartodb",
+  "name": "atd-cartodb.js",
   "version": "0.0.1",
   "description": "Mini version of CartoDB.js",
   "main": "dist/cartodb.js",
