@@ -20,5 +20,5 @@ Scenario('CartoDB loads the leaflet map', function* (I) {
   I.seeElement('#map.leaflet-container');
 
   // It draws 3 layers
-  I.waitNumberOfVisibleElements('#map .leaflet-layer', 3);
+  I.waitNumberOfVisibleElements('#map .leaflet-layer', 3, 5);
 });
