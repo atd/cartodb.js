@@ -1,6 +1,6 @@
 {
   "name": "atd-cartodb.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mini version of CartoDB.js",
   "main": "dist/cartodb.js",
   "scripts": {
