@@ -12,13 +12,6 @@ describe('CartoMaps', function () {
     cartoMaps = new CartoMaps(config);
   });
 
-  describe('constructor', function () {
-    it('should build requestURL correctly', () => {
-      expect(cartoMaps._requestURL).to.be.equal(requestURL);
-    })
-
-  });
-
   describe('urlTemplateQuery', function () {
     var layers = [
       {
