@@ -1,6 +1,7 @@
 {
   "globals": {
     "$": true,
+    "L": true,
     "expect": true,
     "mock": true,
     "sandbox": true,
