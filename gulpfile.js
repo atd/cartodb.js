@@ -261,5 +261,8 @@ gulp.task('test-browser', ['lint', 'clean-tmp'], testBrowser);
 // Build project and run the headless unit tests as you make changes.
 gulp.task('watch', ['run-test-server'], watch);
 
+// Continous integration task
+gulp.task('ci', seq('coverage', 'test-acceptance'));
+
 // An alias of test
 gulp.task('default', ['test']);
