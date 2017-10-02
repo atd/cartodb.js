@@ -39,15 +39,8 @@ describe('CartoMaps', function () {
     // But it needs to change test/setup/node.js to test in phantomJS
     // or other browser instead of using jsdom-global
 
-    after(function () {
-      // When the test either fails or passes, restore the original
-      // jQuery ajax function (Sinon.JS also provides tools to help
-      // test frameworks automate clean-up like this)
-      $.post.restore();
-    });
-
     it('makes a GET request for CartoMaps API', function () {
-      sinon.stub($, 'post');
+      sandbox.stub($, 'post');
 
       cartoMaps.urlTemplateQuery(layers);
 
